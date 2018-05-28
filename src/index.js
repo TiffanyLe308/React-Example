@@ -7,6 +7,7 @@ import reducers from './reducers';
 import YTSearch from 'youtube-api-search';
 import SearchBar from './components/search_bar';
 import VideoList from './components/video_list';
+import VideoDetail from './components/video_detail';
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 const API_KEY = 'AIzaSyDrQsWL0nCDNqPCszbqbbcGQjgoHAfkO4c';
@@ -28,6 +29,7 @@ class App extends Component {
       <div>
         <h1>Hello Tiffany</h1>
         <SearchBar />
+        <VideoDetail video={this.state.videos[0]} />
         <VideoList videos={this.state.videos}/>
       </div>
     )
