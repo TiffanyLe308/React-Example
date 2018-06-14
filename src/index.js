@@ -10,6 +10,7 @@ import YTSearch from 'youtube-api-search';
 import SearchBar from './components/search_bar';
 import VideoList from './components/video_list';
 import VideoDetail from './components/video_detail';
+import WeatherForecast from './components/weather_forecast';
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 const API_KEY = 'AIzaSyDrQsWL0nCDNqPCszbqbbcGQjgoHAfkO4c';
@@ -48,13 +49,14 @@ class Video extends Component {
         <VideoList
           onVideoSelect={(selectedVideo) => this.setState({selectedVideo})}
           videos={this.state.videos}/>
+        <WeatherForecast />
       </div>
     )
   }
 }
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>    
+  <Provider store={createStoreWithMiddleware(reducers)}>
     <Video />
   </Provider>
   , document.querySelector('.container'));
