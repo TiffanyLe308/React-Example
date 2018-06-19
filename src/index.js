@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reducers from './reducers';
+import ReduxPromise from 'redux-promise';
 
 import Book from './components/app';
 import YTSearch from 'youtube-api-search';
@@ -12,7 +13,7 @@ import VideoList from './components/video_list';
 import VideoDetail from './components/video_detail';
 import WeatherForecast from './components/weather_forecast';
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 const API_KEY = 'AIzaSyDrQsWL0nCDNqPCszbqbbcGQjgoHAfkO4c';
 
 class Video extends Component {
@@ -50,9 +51,6 @@ class Video extends Component {
           onVideoSelect={(selectedVideo) => this.setState({selectedVideo})}
           videos={this.state.videos}/>
         <WeatherForecast />
-        <SearchBar />
-        <VideoDetail video={this.state.videos[0]}/>
-        <VideoList videos={this.state.videos}/>
       </div>
     )
   }
