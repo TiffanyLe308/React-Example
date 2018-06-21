@@ -27,11 +27,14 @@ class BookList extends Component {
   }
 };
 
-function mapStateToProps(state) {
+//the function below is totally equal to this
+//function mapStateToProps(state) {
+//   const books = state.books
+//  return { books: state.books }
+// }
+function mapStateToProps({books}) {
   // Whatever is return will show up as props inside of BookList
-  return {
-      books: state.books
-  };
+  return { books };
 }
 
 // Anything returned from this function will end up as props in the container BookList

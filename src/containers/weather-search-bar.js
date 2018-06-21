@@ -13,7 +13,6 @@ class WeatherSearchBar extends Component {
   }
 
   onInputChange(event) {
-    console.log(event.target.value);
     this.setState({ term: event.target.value });
   }
 
@@ -26,7 +25,7 @@ class WeatherSearchBar extends Component {
 
   render() {
     return (
-      <form onSubmit={this.onFormSubmit} className="inpur-group">
+      <form onSubmit={this.onFormSubmit} className="input-group">
         <input
           placeholder="Enter the citi's name"
           className="form-control"

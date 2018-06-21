@@ -25,7 +25,7 @@ class Video extends Component {
       selectedVideo: null
     };
 
-    this.videoSearch('surfboard');
+    this.videoSearch('moissanite');
   }
 
   videoSearch(term) {
