@@ -1,3 +1,5 @@
+
+/* -----VideoList----- */
 .list-group {
   padding-bottom: 2em;
 }
@@ -28,4 +30,24 @@
 
 .list-group-item:hover {
   background-color: #eee;
+}
+
+
+/* -----Weather----- */
+.table thead th, .table td, .table th {
+  vertical-align: middle !important;
+  text-align: center;
+}
+
+.input-group {
+  margin: 20px 0;
+}
+
+svg {
+  height: 150px;
+}
+
+td:first-of-type, td:first-of-type > div {
+  height: 200px;
+  width: 250px;
 }
