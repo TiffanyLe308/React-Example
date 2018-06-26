@@ -3,13 +3,15 @@ import axios from 'axios';
 const WEATHER_API_KEY = 'ffd7e7d03b1e3c1f5ae429dd2a42ddfd';
 const WEATHER_API_URL = `http://api.openweathermap.org/data/2.5/forecast?appid=${WEATHER_API_KEY}`;
 
+const POST_API_KEY = '?key=post1101';
+const POST_API_URL = 'http://reduxblog.herokuapp.com/api';
+
 export const FETCH_WEATHER = 'FETCH_WEATHER';
+export const FETCH_POST = 'FETCH_POST';
 
 export function fetchWeather(city) {
   const weather_url = `${WEATHER_API_URL}&q=${city},fi`;
   const request = axios.get(weather_url);
-
-  console.log('Request: ', request);
 
   return {
     type: FETCH_WEATHER,
@@ -20,8 +22,23 @@ export function fetchWeather(city) {
 export function selectBook(book) {
   console.log('A book has been selected: ', book.title);
   // selectBook is an action creator, it needs to return an action, an object with a type property
-  return{
+  return {
     type: 'BOOK_SELECTED',
     payload: book
   };
+}
+
+export function fetchPost() {
+  const request = axios.get(`${POST_API_URL}/posts${POST_API_KEY}`);
+
+  return {
+    type: 'FETCH_POST',
+    payload: request
+  };
+}
+{
+    "id": 250617,
+    "title": Moissanite - The good one,
+    "categories": Gemstone,
+    "content": Lorem ipsum
 }
