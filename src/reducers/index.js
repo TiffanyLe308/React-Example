@@ -1,4 +1,6 @@
 import { combineReducers } from 'redux';
+import { reducer as formReducer } from 'redux-form';
+
 import BooksReducer from './reducer_books';
 import ActiveBookReducer from './reducer_active_book';
 import WeatherReducer  from './reducer_weather';
@@ -10,7 +12,8 @@ const rootReducer = combineReducers({
   books: BooksReducer,
   activeBook : ActiveBookReducer,
   weather: WeatherReducer,
-  post: PostReducer
+  post: PostReducer,
+  form: formReducer
 });
 
 export default rootReducer;

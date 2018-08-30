@@ -5,7 +5,11 @@ import { connect } from 'react-redux';
 class BookDetail extends Component {
   render() {
     if (!this.props.book) {
-        return <h2>Select the book you want to read.</h2>;
+        return (
+          <div>
+            <h2>Select the book you want to read or add new post.</h2>
+          </div>
+        )
     }
 
     return (

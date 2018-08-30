@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchPost } from '../actions/index';
 
-class Post extends Component {
+class Posts extends Component {
   componentDidMount() {
     this.props.fetchPost;
   }
@@ -10,10 +10,10 @@ class Post extends Component {
   render() {
     return (
       <div>
-        <h1>Posts</h1>
+        <h1>Create New Post</h1>
       </div>
     )
   }
 }
 
-export default connect(null, { fetchPost })(Post);
+export default connect(null, { fetchPost })(Posts);

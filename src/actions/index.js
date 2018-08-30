@@ -36,9 +36,3 @@ export function fetchPost() {
     payload: request
   };
 }
-{
-    "id": 250617,
-    "title": Moissanite - The good one,
-    "categories": Gemstone,
-    "content": Lorem ipsum
-}

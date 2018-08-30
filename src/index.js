@@ -5,7 +5,8 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reducers from './reducers';
 import ReduxPromise from 'redux-promise';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Book from './components/book';
 import YTSearch from 'youtube-api-search';
@@ -13,6 +14,7 @@ import SearchBar from './components/search_bar';
 import VideoList from './components/video_list';
 import VideoDetail from './components/video_detail';
 import WeatherForecast from './components/weather_forecast';
+import Posts from './components/posts';
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 const API_KEY = 'AIzaSyDrQsWL0nCDNqPCszbqbbcGQjgoHAfkO4c';
@@ -60,6 +62,13 @@ class App extends Component {
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
-    <App />
+    <BrowserRouter>
+      <div>
+        <Switch>
+          <Route path="/posts/new" component={Posts} />
+          <Route path="/" component={App} />
+        </Switch>
+      </div>
+    </BrowserRouter>
   </Provider>
   , document.querySelector('.container'));
