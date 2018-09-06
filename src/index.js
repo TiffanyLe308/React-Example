@@ -67,7 +67,7 @@ ReactDOM.render(
       <div>
         <Switch>
           <Route path="/posts/new" component={PostsNew} />
-          <Route path="/posts/" component={Posts} />
+          <Route path="/posts" component={Posts} />
           <Route path="/" component={App} />
         </Switch>
       </div>

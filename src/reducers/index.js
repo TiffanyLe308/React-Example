@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
   books: BooksReducer,
   activeBook : ActiveBookReducer,
   weather: WeatherReducer,
-  post: PostReducer,
+  posts: PostReducer,
   form: formReducer
 });
 

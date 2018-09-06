@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
+import { Link } from 'react-router-dom';
+import { createPost } from '../actions/index';
 
 class PostsNew extends Component {
   // field.input contains bunch of event handler such as onBlur, onFocus
   // ... to show that I want the object properties of field.input communicate with input as props
   renderField(field) {
+    const className = `form-control ${field.meta.touched && field.meta.error ? 'is-invalid' : ''}`;
+
     return (
       <div className="form-group">
         <label>{field.label}</label>
@@ -16,13 +20,17 @@ class PostsNew extends Component {
           {...field.input}
         />
 
-      {field.meta.touched ? field.meta.error : ''}
+      <div className="form-text text-danger">
+          {field.meta.touched ? field.meta.error : ''}
+        </div>
       </div>
     );
   }
 
   onSubmit(values) {
-    console.log(values);
+    this.props.createPost(values, () => {
+      this.props.history.push("/posts");
+    });
   }
 
   render() {
@@ -54,6 +62,7 @@ class PostsNew extends Component {
           />
 
         <button className="btn btn-primary" type="submit">Submit</button>
+        <Link className="btn btn-danger ml-2" to="/posts">Cancel</Link>
         </form>
       </div>
     )
@@ -82,4 +91,4 @@ function validate(values) {
 export default reduxForm({
   validate,
   form: 'PostsNewForm'
-})(PostsNew);
+})(connect(null, { createPost })(PostsNew));

@@ -10,8 +10,7 @@ export default class Book extends Component {
     return (
       <div className="book-list">
         <div>
-          <p><Link className="btn btn-primary" to="/posts">Post list</Link></p>
-          <p><Link className="btn btn-primary" to="/posts/new">Add a post</Link></p>
+          <p><Link className="btn btn-primary" to="/posts">Post list</Link><Link className="btn btn-success ml-2" to="/posts/new">Add a post</Link></p>
         </div>
         <BookList />
         <BookDetail />

@@ -7,7 +7,7 @@ import PostsNew from './postsnew';
 
 class Posts extends Component {
   componentDidMount() {
-    this.props.fetchPost;
+    this.props.fetchPost();
   }
 
   renderPosts() {
@@ -15,14 +15,14 @@ class Posts extends Component {
       return (
         <li className="list-group-item" key={post.id}>{post.title}</li>
       );
-    })
+    });
   }
 
   render() {
     return (
       <div>
         <h1>Posts Archive</h1>
-        <p><Link className="btn btn-primary" to="/posts/new">Add a post</Link></p>
+        <p><Link className="btn btn-primary" to="/posts/new">Add a post</Link><Link className="btn btn-danger ml-2" to="/">Cancel</Link></p>
         <ul className="list-group">
           {this.renderPosts()}
         </ul>
@@ -31,4 +31,8 @@ class Posts extends Component {
   }
 }
 
-export default connect(null, { fetchPost })(Posts);
+function mapStateToProps(state) {
+  return { posts: state.posts };
+}
+
+export default connect(mapStateToProps, { fetchPost })(Posts);
