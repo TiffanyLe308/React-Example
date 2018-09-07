@@ -15,7 +15,8 @@ import VideoList from './components/video_list';
 import VideoDetail from './components/video_detail';
 import WeatherForecast from './components/weather_forecast';
 import Posts from './components/posts';
-import PostsNew from './components/postsnew';
+import PostsNew from './components/posts_new';
+import PostsShow from './components/posts_show';
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 const API_KEY = 'AIzaSyDrQsWL0nCDNqPCszbqbbcGQjgoHAfkO4c';
@@ -67,6 +68,7 @@ ReactDOM.render(
       <div>
         <Switch>
           <Route path="/posts/new" component={PostsNew} />
+          <Route path="/posts/:id" component={PostsShow} />
           <Route path="/posts" component={Posts} />
           <Route path="/" component={App} />
         </Switch>

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { fetchPost } from '../actions/index';
 import { Link } from 'react-router-dom';
 
-import PostsNew from './postsnew';
+import PostsNew from './posts_new';
 
 class Posts extends Component {
   componentDidMount() {
@@ -19,6 +19,8 @@ class Posts extends Component {
   }
 
   render() {
+    //console.log(this.props.posts);
+
     return (
       <div>
         <h1>Posts Archive</h1>

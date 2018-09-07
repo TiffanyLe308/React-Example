@@ -8,6 +8,7 @@ const POST_API_URL = 'http://reduxblog.herokuapp.com/api';
 
 export const FETCH_WEATHER = 'FETCH_WEATHER';
 export const FETCH_POST = 'FETCH_POST';
+export const FETCH_POST_ID = 'FETCH_POST_ID';
 export const CREATE_POST = 'CREATE_POST';
 
 export function fetchWeather(city) {
@@ -44,6 +45,15 @@ export function createPost(values, callback) {
 
   return {
     type: 'CREATE_POST',
+    payload: request
+  };
+}
+
+export function fetchPostId(id) {
+  const request = axios.get(`${POST_API_URL}/posts/${id}${POST_API_KEY}`);
+
+  return {
+    type: 'FETCH_POST_ID',
     payload: request
   };
 }
