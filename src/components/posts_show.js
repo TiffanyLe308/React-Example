@@ -4,6 +4,12 @@ import { fetchPost } from '../actions/index';
 import { Link } from 'react-router-dom';
 
 class PostsShow extends Component {
+  componentDidMount() {
+    // Fetching post with specific id
+    const { id } = this.props.match.params;
+    this.props.fetchPost(id);
+  }
+
   render() {
     return (
       <div>
@@ -13,4 +19,4 @@ class PostsShow extends Component {
   }
 }
 
-export default PostsShow;
+export default connect(null, { fetchPost })(PostsShow);
