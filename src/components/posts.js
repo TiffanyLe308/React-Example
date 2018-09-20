@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPost } from '../actions/index';
 import { Link } from 'react-router-dom';
 
 import PostsNew from './posts_new';
+import { fetchPost } from '../actions/index';
 
 class Posts extends Component {
   componentDidMount() {
@@ -13,7 +13,11 @@ class Posts extends Component {
   renderPosts() {
     return _.map(this.props.posts, post => {
       return (
-        <li className="list-group-item" key={post.id}>{post.title}</li>
+        <li className="list-group-item" key={post.id}>
+          <Link to={`/posts/${post.id}`}>
+            {post.title}
+          </Link>
+        </li>
       );
     });
   }

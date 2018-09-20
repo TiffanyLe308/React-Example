@@ -1,18 +1,29 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPost } from '../actions/index';
 import { Link } from 'react-router-dom';
+
+import { fetchPostId, deletePost } from '../actions/index';
 
 class PostsShow extends Component {
   componentDidMount() {
-    // Fetching post with specific id
+    // if aleady have a post list, don't need to refetch again
+    if(!this.props.post) {
+      // Fetching post with specific id
+      const { id } = this.props.match.params;
+      this.props.fetchPostId(id);
+    }
+  }
+
+  onDeletePost() {
     const { id } = this.props.match.params;
-    this.props.fetchPost(id);
+    this.props.deletePost(id, () => {
+      this.props.history.push("/posts");
+    });
   }
 
   render() {
     const { post } = this.props;
-    
+
     if (!post) {
       return <div>Loading ...</div>;
     }
@@ -20,6 +31,13 @@ class PostsShow extends Component {
     return (
       <div>
         <h1>{post.title}</h1>
+        <p className="mt-3">
+          <Link className="btn btn-primary" to="/posts">Back to posts list</Link>
+          <button
+            className="btn btn-danger ml-2"
+            onClick={this.onDeletePost.bind(this)}
+          >Delete post</button>
+        </p>
         <h6>{post.categories}</h6>
         <p>{post.content}</p>
       </div>
@@ -33,4 +51,4 @@ function mapStateToProps({ posts }, ownProps) {
   return { post: posts[ownProps.match.params.id] };
 }
 
-export default connect(mapStateToProps, { fetchPost })(PostsShow);
+export default connect(mapStateToProps, { fetchPostId, deletePost })(PostsShow);

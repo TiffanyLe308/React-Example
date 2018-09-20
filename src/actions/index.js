@@ -10,6 +10,7 @@ export const FETCH_WEATHER = 'FETCH_WEATHER';
 export const FETCH_POST = 'FETCH_POST';
 export const FETCH_POST_ID = 'FETCH_POST_ID';
 export const CREATE_POST = 'CREATE_POST';
+export const DELETE_POST = 'DELETE_POST';
 
 export function fetchWeather(city) {
   const weather_url = `${WEATHER_API_URL}&q=${city},fi`;
@@ -55,5 +56,15 @@ export function fetchPostId(id) {
   return {
     type: 'FETCH_POST_ID',
     payload: request
+  };
+}
+
+export function deletePost(id, callback) {
+  const request = axios.delete(`${POST_API_URL}/posts/${id}${POST_API_KEY}`, id)
+  .then(() => callback());
+
+  return {
+    type: 'DELETE_POST',
+    payload: id
   };
 }

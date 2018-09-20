@@ -11,17 +11,19 @@ class PostsNew extends Component {
     const className = `form-control ${field.meta.touched && field.meta.error ? 'is-invalid' : ''}`;
 
     return (
-      <div className="form-group">
-        <label>{field.label}</label>
+      <div>
+        <div className="form-group">
+          <label>{field.label}</label>
 
-        <input
-          className="form-control"
-          type = "text"
-          {...field.input}
-        />
+          <input
+            className="form-control"
+            type = "text"
+            {...field.input}
+          />
 
-      <div className="form-text text-danger">
-          {field.meta.touched ? field.meta.error : ''}
+        <div className="form-text text-danger">
+            {field.meta.touched ? field.meta.error : ''}
+          </div>
         </div>
       </div>
     );
@@ -29,7 +31,7 @@ class PostsNew extends Component {
 
   onSubmit(values) {
     this.props.createPost(values, () => {
-      this.props.history.push("/postsude");
+      this.props.history.push("/posts"); 
     });
   }
 
